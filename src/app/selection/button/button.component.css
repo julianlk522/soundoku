@@ -1,0 +1,11 @@
+.selectionButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #eee;
+  border-radius: 1rem;
+}
+
+.selectionButton:hover {
+  background: #ccc;
+}

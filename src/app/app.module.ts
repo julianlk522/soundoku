@@ -2,17 +2,19 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
-import { GridComponent } from './grid/grid.component';
+import { BoardComponent } from './board/board.component';
+import { SelectionGridComponent } from './selection/grid/grid.component';
+import { SelectionButtonComponent } from './selection/button/button.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    GridComponent
+    BoardComponent,
+    SelectionGridComponent,
+    SelectionButtonComponent,
   ],
-  imports: [
-    BrowserModule
-  ],
+  imports: [BrowserModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
