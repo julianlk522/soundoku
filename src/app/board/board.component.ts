@@ -7,7 +7,8 @@ import { GetSudokuService } from '../get-sudoku.service';
   styleUrls: ['./board.component.css'],
 })
 export class BoardComponent {
-  board = [];
+  board: number[] = [];
+  rows: number[][] = [];
 
   constructor(private sudoku: GetSudokuService) {}
 
@@ -15,6 +16,7 @@ export class BoardComponent {
     this.board = this.sudoku.makePuzzle();
     console.log(this.board);
 
+    //  check for number of filled in spaces (not important, just testing difficulty)
     let filledNums = 0;
 
     for (let i = 0; i < this.board.length; i++) {
@@ -23,5 +25,11 @@ export class BoardComponent {
       }
     }
     console.log(filledNums);
+
+    //  split board into groups of 9 and assign product to rows
+    for (let r = 0; r < 9; r++) {
+      this.rows.push(this.board.slice(r * 9, r * 9 + 9));
+    }
+    console.log(this.rows);
   }
 }
