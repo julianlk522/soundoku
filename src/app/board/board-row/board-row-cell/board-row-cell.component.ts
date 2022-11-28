@@ -7,4 +7,5 @@ import { Component, Input } from '@angular/core';
 })
 export class BoardRowCellComponent {
   @Input() value: number;
+  @Input() index: number;
 }

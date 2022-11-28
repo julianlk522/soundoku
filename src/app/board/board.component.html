@@ -1,3 +1,7 @@
 <div class="board">
-  <app-board-row *ngFor="let row of rows" [row]="row"> </app-board-row>
+  <app-board-row
+    *ngFor="let row of rows; index as index"
+    [row]="row"
+    [index]="index"
+  ></app-board-row>
 </div>

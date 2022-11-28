@@ -1,6 +1,6 @@
 .cell {
-  background: #bbb;
-  display: flex;
-  padding: 1rem;
-  border-radius: 0.25rem;
+  border: 2px solid #bbb;
+  width: 100%;
+  text-align: center;
+  padding: 1rem 0;
 }

@@ -1,1 +1,9 @@
-<p class="cell">{{ value !== null ? value : "_" }}</p>
+<h3
+  class="cell"
+  [ngStyle]="{
+    background: value !== null ? 'rgba(0, 0, 255, 0.5)' : '',
+    borderRight: index === 2 || index === 5 ? '4px solid black' : ''
+  }"
+>
+  {{ value !== null ? value + 1 : "_" }}
+</h3>
