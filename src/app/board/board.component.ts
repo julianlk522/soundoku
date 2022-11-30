@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { GetSudokuService } from '../get-sudoku.service';
+import { NumberSelectService } from '../selection/grid/number-select-service.service';
 
 @Component({
   selector: 'app-board',
@@ -7,15 +8,33 @@ import { GetSudokuService } from '../get-sudoku.service';
   styleUrls: ['./board.component.css'],
 })
 export class BoardComponent {
-  board: number[] = [];
-  rows: number[][] = [];
+  board: (number | null)[] = [];
+  solution: number[] = [];
+  rows: (number | null)[][] = [];
   selectedCell: number | null = null;
 
-  constructor(private sudoku: GetSudokuService) {}
+  constructor(
+    private sudoku: GetSudokuService,
+    private numberSelect: NumberSelectService
+  ) {}
 
   ngOnInit(): void {
+    this.numberSelect.selectedNumberEmitter.subscribe((num) => {
+      console.log('received emission in board component');
+      this.checkIfCorrectNumAtCell(num);
+    });
     this.board = this.sudoku.makePuzzle();
+
+    this.solution = this.sudoku
+      .getSolution(this.board)
+      .map((num: number) => num + 1);
+
+    this.board = this.board.map((num: number | null) =>
+      num !== null ? num + 1 : null
+    );
+
     console.log(this.board);
+    console.log(this.solution);
 
     //  check for number of filled in spaces (not important, just testing difficulty)
     let filledNums = 0;
@@ -36,6 +55,14 @@ export class BoardComponent {
 
   handleCellSelected(cellIndex: number) {
     this.selectedCell = cellIndex;
-    console.log(`cell selected ${cellIndex} (board)`);
+  }
+
+  checkIfCorrectNumAtCell(num: number) {
+    if (this.selectedCell !== null) {
+      if (this.solution[this.selectedCell] === num) {
+        return console.log('correct!');
+      }
+      return console.log('false...');
+    }
   }
 }

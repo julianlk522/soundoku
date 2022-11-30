@@ -6,7 +6,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
   styleUrls: ['./board-row-cell.component.css'],
 })
 export class BoardRowCellComponent {
-  @Input() value: number;
+  @Input() value: number | null;
   @Input() rowIndex: number;
   @Input() indexInLocalRow: number;
   @Input() selectedCell: number | null;
@@ -14,6 +14,8 @@ export class BoardRowCellComponent {
   @Output() emitSelected = new EventEmitter<number>();
 
   toggleCellSelected() {
-    this.emitSelected.emit(this.indexInLocalRow);
+    const overallCellIndex: number | null =
+      this.rowIndex * 9 + this.indexInLocalRow;
+    this.emitSelected.emit(overallCellIndex);
   }
 }

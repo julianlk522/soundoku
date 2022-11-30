@@ -6,17 +6,13 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
   styleUrls: ['./board-row.component.css'],
 })
 export class BoardRowComponent {
-  @Input() row: number[];
+  @Input() row: (number | null)[];
   @Input() rowIndex: number;
   @Input() selectedCell: number | null;
 
   @Output() newCellSelected = new EventEmitter();
 
   handleCellSelect(cellIndex: number) {
-    console.log(
-      `toggled index ${cellIndex} in row ${this.rowIndex} (board-row)`
-    );
-    const overallCellIndex: number = this.rowIndex * 9 + cellIndex;
-    this.newCellSelected.emit(overallCellIndex);
+    this.newCellSelected.emit(cellIndex);
   }
 }

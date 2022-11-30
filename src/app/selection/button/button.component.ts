@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-selection-button',
@@ -7,6 +7,11 @@ import { Component, Input } from '@angular/core';
 })
 export class SelectionButtonComponent {
   @Input() num: number;
+  @Output() emitNum = new EventEmitter<number>();
 
   constructor() {}
+
+  onClick() {
+    this.emitNum.emit(this.num);
+  }
 }

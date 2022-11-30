@@ -3,7 +3,7 @@
   [ngStyle]="{
     background:
       selectedCell === rowIndex * 9 + indexInLocalRow
-        ? 'black'
+        ? 'rgba(0, 0, 255, 0.75)'
         : value !== null
         ? 'rgba(0, 0, 255, 0.5)'
         : '',
@@ -12,5 +12,5 @@
   }"
   (click)="toggleCellSelected()"
 >
-  {{ value !== null ? value + 1 : "_" }}
+  {{ value !== null ? value : "_" }}
 </h3>
