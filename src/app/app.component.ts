@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NumberSelectService } from './selection/grid/number-select-service.service';
+import { NumberSelectService } from './number-select.service';
 
 @Component({
   selector: 'app-root',

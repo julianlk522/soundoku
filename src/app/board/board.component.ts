@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { GetSudokuService } from '../get-sudoku.service';
-import { NumberSelectService } from '../selection/grid/number-select-service.service';
+import { NumberSelectService } from '../number-select.service';
 
 @Component({
   selector: 'app-board',

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { NumberSelectService } from './number-select-service.service';
+import { AudioContextService } from 'src/app/audio-context.service';
+import { NumberSelectService } from 'src/app/number-select.service';
 
 @Component({
   selector: 'app-selection-grid',
@@ -9,7 +10,10 @@ import { NumberSelectService } from './number-select-service.service';
 export class SelectionGridComponent {
   arr: number[] = [];
 
-  constructor(private numberSelect: NumberSelectService) {}
+  constructor(
+    private numberSelect: NumberSelectService,
+    private audioService: AudioContextService
+  ) {}
 
   ngOnInit() {
     for (let i = 1; i <= 9; i++) {
@@ -20,5 +24,6 @@ export class SelectionGridComponent {
   onReceiveEmitNum(num: number) {
     console.log(num);
     this.numberSelect.emitSelectedNumber(num);
+    this.audioService.play(num - 1);
   }
 }

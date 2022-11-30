@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { NumberSelectService } from './number-select-service.service';
+import { NumberSelectService } from './number-select.service';
 
 describe('NumberSelectServiceService', () => {
   let service: NumberSelectService;
