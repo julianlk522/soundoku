@@ -42,8 +42,7 @@ export class AudioContextService {
       frequency: 415.3,
     },
   ];
-  private audioCtx = new AudioContext();
-  private gainNode = this.audioCtx.createGain();
+  audioCtx: AudioContext;
 
   attackTime = 0.25;
   decayTime = 0.25;
@@ -51,27 +50,33 @@ export class AudioContextService {
   releaseTime = 0.25;
 
   play(index: number) {
+    this.audioCtx = new AudioContext();
+    const gainNode = this.audioCtx.createGain();
     const oscillator = this.audioCtx.createOscillator();
     oscillator.type = 'sine';
 
     const now = this.audioCtx.currentTime;
 
-    this.gainNode.gain.setValueAtTime(0, 0);
-    this.gainNode.gain.linearRampToValueAtTime(1, now + this.attackTime);
-    this.gainNode.gain.linearRampToValueAtTime(
+    gainNode.gain.setValueAtTime(0, 0);
+    gainNode.gain.linearRampToValueAtTime(1, now + this.attackTime);
+    gainNode.gain.linearRampToValueAtTime(
       this.sustainLevel,
       now + this.attackTime + this.decayTime
     );
-    this.gainNode.gain.setValueAtTime(
-      this.sustainLevel,
-      now + 1 - this.releaseTime
-    );
-    this.gainNode.gain.linearRampToValueAtTime(0, now + 1);
+    gainNode.gain.setValueAtTime(this.sustainLevel, now + 1 - this.releaseTime);
+    gainNode.gain.linearRampToValueAtTime(0, now + 1);
 
-    oscillator.connect(this.gainNode);
-    this.gainNode.connect(this.audioCtx.destination);
+    oscillator.connect(gainNode);
+    gainNode.connect(this.audioCtx.destination);
+
     oscillator.frequency.value = this.notes[index].frequency;
     oscillator.start(now);
     oscillator.stop(now + 1);
+  }
+
+  stop() {
+    if (this.audioCtx?.state === 'running') {
+      this.audioCtx.close();
+    }
   }
 }

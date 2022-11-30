@@ -22,8 +22,8 @@ export class SelectionGridComponent {
   }
 
   onReceiveEmitNum(num: number) {
-    console.log(num);
     this.numberSelect.emitSelectedNumber(num);
+    this.audioService.stop();
     this.audioService.play(num - 1);
   }
 }

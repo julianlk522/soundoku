@@ -20,7 +20,6 @@ export class BoardComponent {
 
   ngOnInit(): void {
     this.numberSelect.selectedNumberEmitter.subscribe((num) => {
-      console.log('received emission in board component');
       this.checkIfCorrectNumAtCell(num);
     });
     this.board = this.sudoku.makePuzzle();
@@ -46,11 +45,15 @@ export class BoardComponent {
     }
     console.log(filledNums);
 
+    this.setRows();
+  }
+
+  setRows() {
     //  split board into groups of 9 and assign product to rows
+    this.rows = [];
     for (let r = 0; r < 9; r++) {
       this.rows.push(this.board.slice(r * 9, r * 9 + 9));
     }
-    console.log(this.rows);
   }
 
   handleCellSelected(cellIndex: number) {
@@ -60,9 +63,16 @@ export class BoardComponent {
   checkIfCorrectNumAtCell(num: number) {
     if (this.selectedCell !== null) {
       if (this.solution[this.selectedCell] === num) {
-        return console.log('correct!');
+        console.log('correct!');
+        return this.handleCorrectGuess();
       }
       return console.log('false...');
     }
+  }
+
+  handleCorrectGuess() {
+    if (this.selectedCell === null) return;
+    this.board.splice(this.selectedCell, 1, this.solution[this.selectedCell]);
+    this.setRows();
   }
 }
