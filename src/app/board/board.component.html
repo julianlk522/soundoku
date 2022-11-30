@@ -2,6 +2,8 @@
   <app-board-row
     *ngFor="let row of rows; index as index"
     [row]="row"
-    [index]="index"
+    [rowIndex]="index"
+    [selectedCell]="selectedCell"
+    (newCellSelected)="handleCellSelected($event)"
   ></app-board-row>
 </div>

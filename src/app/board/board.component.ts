@@ -9,6 +9,7 @@ import { GetSudokuService } from '../get-sudoku.service';
 export class BoardComponent {
   board: number[] = [];
   rows: number[][] = [];
+  selectedCell: number | null = null;
 
   constructor(private sudoku: GetSudokuService) {}
 
@@ -31,5 +32,10 @@ export class BoardComponent {
       this.rows.push(this.board.slice(r * 9, r * 9 + 9));
     }
     console.log(this.rows);
+  }
+
+  handleCellSelected(cellIndex: number) {
+    this.selectedCell = cellIndex;
+    console.log(`cell selected ${cellIndex} (board)`);
   }
 }
