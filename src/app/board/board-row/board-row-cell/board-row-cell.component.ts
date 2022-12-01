@@ -2,7 +2,25 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-board-row-cell',
-  templateUrl: './board-row-cell.component.html',
+  // templateUrl: './board-row-cell.component.html',
+  template: `
+    <div
+      class="cell"
+      [ngStyle]="{
+        background:
+          selectedCell === rowIndex * 9 + indexInLocalRow
+            ? 'rgba(0, 0, 255, 0.75)'
+            : value !== null
+            ? 'rgba(0, 0, 255, 0.5)'
+            : '',
+        borderRight:
+          indexInLocalRow === 2 || indexInLocalRow === 5
+            ? '4px solid black'
+            : ''
+      }"
+      (click)="toggleCellSelected()"
+    ></div>
+  `,
   styleUrls: ['./board-row-cell.component.css'],
 })
 export class BoardRowCellComponent {
@@ -13,13 +31,16 @@ export class BoardRowCellComponent {
 
   @Output() emitSelected = new EventEmitter<{
     overallIndex: number;
-    value: number;
+    value: number | boolean;
   }>();
 
   toggleCellSelected() {
-    if (this.value === null) return;
     const overallIndex: number | null =
       this.rowIndex * 9 + this.indexInLocalRow;
-    this.emitSelected.emit({ overallIndex, value: this.value });
+    if (this.value !== null) {
+      this.emitSelected.emit({ overallIndex, value: this.value });
+    } else {
+      this.emitSelected.emit({ overallIndex, value: false });
+    }
   }
 }

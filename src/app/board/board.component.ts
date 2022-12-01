@@ -5,7 +5,18 @@ import { NumberSelectService } from '../number-select.service';
 
 @Component({
   selector: 'app-board',
-  templateUrl: './board.component.html',
+  // templateUrl: './board.component.html',
+  template: `
+    <div class="board">
+      <app-board-row
+        *ngFor="let row of rows; index as index"
+        [row]="row"
+        [rowIndex]="index"
+        [selectedCell]="selectedCell"
+        (newCellSelected)="handleCellSelected($event)"
+      ></app-board-row>
+    </div>
+  `,
   styleUrls: ['./board.component.css'],
 })
 export class BoardComponent {
@@ -63,11 +74,13 @@ export class BoardComponent {
     value,
   }: {
     overallIndex: number;
-    value: number;
+    value: number | boolean;
   }) {
     this.selectedCell = overallIndex;
-    this.audioContext.stop();
-    this.audioContext.play(value - 1);
+    if (typeof value === 'number') {
+      this.audioContext.stop();
+      this.audioContext.play(value - 1);
+    }
   }
 
   checkIfCorrectNumAtCell(num: number) {

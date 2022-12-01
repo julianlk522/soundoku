@@ -4,7 +4,16 @@ import { NumberSelectService } from 'src/app/number-select.service';
 
 @Component({
   selector: 'app-selection-grid',
-  templateUrl: './grid.component.html',
+  // templateUrl: './grid.component.html',
+  template: `
+    <div class="grid">
+      <app-selection-button
+        *ngFor="let num of arr"
+        [num]="num"
+        (emitNum)="onReceiveEmitNum($event)"
+      ></app-selection-button>
+    </div>
+  `,
   styleUrls: ['./grid.component.css'],
 })
 export class SelectionGridComponent {

@@ -1,6 +1,12 @@
+:host {
+  width: auto;
+}
+
 .grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1rem;
-  max-width: 50vw;
+  align-items: center;
+  max-width: 50%;
+  width: 60%;
 }
