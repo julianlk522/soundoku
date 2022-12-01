@@ -1,33 +1,27 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
 
-@Component({
-  selector: 'app-timer',
-  // templateUrl: './timer.component.html',
-  template: ` <h3>{{ formattedTime }}</h3> `,
-  styleUrls: ['./timer.component.css'],
+@Injectable({
+  providedIn: 'root',
 })
-export class TimerComponent implements OnDestroy {
-  intervalId = 0;
-  seconds = 0;
+export class TimerControlsService {
+  private intervalId = 0;
+  private seconds = 0;
   formattedTime = this.formatSeconds(this.seconds);
 
-  ngOnInit() {
-    this.start();
-  }
+  private timerSource = new Subject<string>();
+  timerData = this.timerSource.asObservable();
 
-  ngOnDestroy() {
-    this.reset();
-  }
-
-  private reset() {
+  reset() {
     clearInterval(this.intervalId);
   }
 
-  private start() {
+  start() {
     this.reset();
     this.intervalId = window.setInterval(() => {
       this.seconds++;
       this.formattedTime = this.formatSeconds(this.seconds);
+      this.timerSource.next(this.formattedTime);
     }, 1000);
   }
 

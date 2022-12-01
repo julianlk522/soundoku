@@ -7,7 +7,7 @@ import { SelectionGridComponent } from './selection/grid/grid.component';
 import { SelectionButtonComponent } from './selection/button/button.component';
 import { BoardRowComponent } from './board/board-row/board-row.component';
 import { BoardRowCellComponent } from './board/board-row/board-row-cell/board-row-cell.component';
-import { TimerComponent } from './timer/timer.component';
+import { GameOverMessageComponent } from './game-over-message/game-over-message.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +17,7 @@ import { TimerComponent } from './timer/timer.component';
     SelectionButtonComponent,
     BoardRowComponent,
     BoardRowCellComponent,
-    TimerComponent,
+    GameOverMessageComponent,
   ],
   imports: [BrowserModule],
   providers: [],

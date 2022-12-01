@@ -8,3 +8,10 @@
   gap: 1rem;
   align-items: center;
 }
+
+.timer {
+  text-align: center;
+  margin-top: 1rem;
+  display: inline-block;
+  width: 100%;
+}
