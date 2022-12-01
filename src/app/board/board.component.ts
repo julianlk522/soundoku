@@ -37,8 +37,10 @@ export class BoardComponent {
     this.numberSelect.selectedNumberEmitter.subscribe((num) => {
       this.checkIfCorrectNumAtCell(num);
     });
+
     this.start = this.sudoku.makePuzzle();
 
+    //  getSolution() method relies on a range of 0-8 so must be called before mapping values to 1-9
     this.solution = this.sudoku
       .getSolution(this.start)
       .map((num: number) => num + 1);
@@ -46,22 +48,39 @@ export class BoardComponent {
     this.start = this.start.map((num: number | null) =>
       num !== null ? num + 1 : null
     );
+
+    this.fillCellsToDecreaseDifficulty();
+
     this.board = [...this.start];
+    this.setRows();
 
     console.log(this.board);
     console.log(this.solution);
+  }
 
-    //  check for number of filled in spaces (not important, just testing difficulty)
-    let filledNums = 0;
+  fillCellsToDecreaseDifficulty() {
+    //  check for number of initially filled spaces
+    let filledNums = this.start.filter(
+      (val: number | null) => val !== null
+    ).length;
 
-    for (let i = 0; i < this.board.length; i++) {
-      if (this.board[i] !== null) {
-        filledNums++;
+    //  fill in random cells until filledNums = 40
+    //  default difficulty makes this game really hard lol
+
+    let n = 40 - filledNums;
+    const checkedIndices = [];
+
+    while (n > 0) {
+      const randomIndex = Math.floor(Math.random() * 81);
+      if (
+        checkedIndices.indexOf(randomIndex) === -1 &&
+        this.start[randomIndex] === null
+      ) {
+        this.start.splice(randomIndex, 1, this.solution[randomIndex]);
+        n--;
       }
+      checkedIndices.push(randomIndex);
     }
-    console.log(filledNums);
-
-    this.setRows();
   }
 
   setRows() {
