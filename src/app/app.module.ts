@@ -7,6 +7,7 @@ import { SelectionGridComponent } from './selection/grid/grid.component';
 import { SelectionButtonComponent } from './selection/button/button.component';
 import { BoardRowComponent } from './board/board-row/board-row.component';
 import { BoardRowCellComponent } from './board/board-row/board-row-cell/board-row-cell.component';
+import { TimerComponent } from './timer/timer.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { BoardRowCellComponent } from './board/board-row/board-row-cell/board-ro
     SelectionButtonComponent,
     BoardRowComponent,
     BoardRowCellComponent,
+    TimerComponent,
   ],
   imports: [BrowserModule],
   providers: [],

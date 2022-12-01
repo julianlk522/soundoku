@@ -13,6 +13,8 @@ import { NumberSelectService } from 'src/app/number-select.service';
         (emitNum)="onReceiveEmitNum($event)"
       ></app-selection-button>
     </div>
+
+    <app-timer></app-timer>
   `,
   styleUrls: ['./grid.component.css'],
 })
