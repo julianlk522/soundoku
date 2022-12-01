@@ -18,6 +18,7 @@ export class TimerControlsService {
 
   start() {
     this.reset();
+    this.seconds = 0;
     this.intervalId = window.setInterval(() => {
       this.seconds++;
       this.formattedTime = this.formatSeconds(this.seconds);

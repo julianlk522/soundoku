@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-game-over-message',
@@ -10,10 +10,17 @@ import { Component, Input } from '@angular/core';
       <h3>
         Your time was: <span class="victoryTime">{{ victoryTime }}</span>
       </h3>
+      <br />
+      <button (click)="requestNewGame()">Play Again?</button>
     </div>
   `,
   styleUrls: ['./game-over-message.component.css'],
 })
 export class GameOverMessageComponent {
   @Input() victoryTime: string;
+  @Output() emitNewGameRequest = new EventEmitter();
+
+  requestNewGame() {
+    this.emitNewGameRequest.emit();
+  }
 }

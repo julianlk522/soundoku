@@ -108,7 +108,7 @@ export class BoardComponent {
   }
 
   checkIfCorrectNumAtCell(num: number) {
-    if (this.selectedCell !== null) {
+    if (this.selectedCell !== null && this.board[this.selectedCell] === null) {
       if (this.solution[this.selectedCell] === num) {
         console.log('correct!');
         return this.handleCorrectGuess();

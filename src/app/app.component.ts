@@ -6,6 +6,7 @@ import { TimerControlsService } from './timer-controls.service';
   // templateUrl: './app.component.html',
   template: `
     <div
+      *ngIf="!gameReset"
       class="mainGameFlexWrapper"
       [ngStyle]="{
         opacity: gameWon ? '0.2' : '1',
@@ -19,6 +20,7 @@ import { TimerControlsService } from './timer-controls.service';
       *ngIf="gameWon"
       class="gameOverMessage"
       [victoryTime]="victoryTime"
+      (emitNewGameRequest)="newGame()"
     ></app-game-over-message>
   `,
   styleUrls: ['./app.component.css'],
@@ -26,13 +28,19 @@ import { TimerControlsService } from './timer-controls.service';
 export class AppComponent {
   title = 'Soundoku';
   gameWon = false;
+  gameReset = false;
   victoryTime = '';
 
   constructor(private timerControls: TimerControlsService) {}
 
   onGameWin() {
-    console.log('yay');
     this.gameWon = true;
     this.victoryTime = this.timerControls.formattedTime;
+  }
+
+  newGame() {
+    this.gameWon = false;
+    this.gameReset = true;
+    setTimeout(() => (this.gameReset = false), 0);
   }
 }
