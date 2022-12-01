@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AudioContextService } from '../audio-context.service';
 import { GetSudokuService } from '../get-sudoku.service';
 import { NumberSelectService } from '../number-select.service';
 
@@ -15,7 +16,8 @@ export class BoardComponent {
 
   constructor(
     private sudoku: GetSudokuService,
-    private numberSelect: NumberSelectService
+    private numberSelect: NumberSelectService,
+    private audioContext: AudioContextService
   ) {}
 
   ngOnInit(): void {
@@ -56,8 +58,16 @@ export class BoardComponent {
     }
   }
 
-  handleCellSelected(cellIndex: number) {
-    this.selectedCell = cellIndex;
+  handleCellSelected({
+    overallIndex,
+    value,
+  }: {
+    overallIndex: number;
+    value: number;
+  }) {
+    this.selectedCell = overallIndex;
+    this.audioContext.stop();
+    this.audioContext.play(value - 1);
   }
 
   checkIfCorrectNumAtCell(num: number) {

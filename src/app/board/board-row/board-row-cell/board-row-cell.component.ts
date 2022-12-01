@@ -11,11 +11,15 @@ export class BoardRowCellComponent {
   @Input() indexInLocalRow: number;
   @Input() selectedCell: number | null;
 
-  @Output() emitSelected = new EventEmitter<number>();
+  @Output() emitSelected = new EventEmitter<{
+    overallIndex: number;
+    value: number;
+  }>();
 
   toggleCellSelected() {
-    const overallCellIndex: number | null =
+    if (this.value === null) return;
+    const overallIndex: number | null =
       this.rowIndex * 9 + this.indexInLocalRow;
-    this.emitSelected.emit(overallCellIndex);
+    this.emitSelected.emit({ overallIndex, value: this.value });
   }
 }

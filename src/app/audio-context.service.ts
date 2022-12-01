@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class AudioContextService {
-  public notes = [
+  private notes = [
     {
       name: 'C',
       frequency: 261.63,
@@ -42,12 +42,12 @@ export class AudioContextService {
       frequency: 415.3,
     },
   ];
-  audioCtx: AudioContext;
+  private audioCtx: AudioContext;
 
-  attackTime = 0.25;
-  decayTime = 0.25;
-  sustainLevel = 0.75;
-  releaseTime = 0.25;
+  private attackTime = 0.25;
+  private decayTime = 0.25;
+  private sustainLevel = 0.75;
+  private releaseTime = 0.25;
 
   play(index: number) {
     this.audioCtx = new AudioContext();

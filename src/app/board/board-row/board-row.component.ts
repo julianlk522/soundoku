@@ -12,7 +12,13 @@ export class BoardRowComponent {
 
   @Output() newCellSelected = new EventEmitter();
 
-  handleCellSelect(cellIndex: number) {
-    this.newCellSelected.emit(cellIndex);
+  handleCellSelect({
+    overallIndex,
+    value,
+  }: {
+    overallIndex: number;
+    value: number;
+  }) {
+    this.newCellSelected.emit({ overallIndex, value });
   }
 }
