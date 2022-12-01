@@ -7,12 +7,13 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
     <div
       class="cell"
       [ngStyle]="{
-        background:
-          selectedCell === rowIndex * 9 + indexInLocalRow
-            ? 'rgba(0, 0, 255, 0.75)'
-            : value !== null
-            ? 'rgba(0, 0, 255, 0.5)'
-            : '',
+        background: changed
+          ? 'rgba(0, 255, 0, 0.5)'
+          : selectedCell === rowIndex * 9 + indexInLocalRow
+          ? 'rgba(0, 0, 255, 0.75)'
+          : value !== null
+          ? 'rgba(0, 0, 255, 0.5)'
+          : '',
         borderRight:
           indexInLocalRow === 2 || indexInLocalRow === 5
             ? '4px solid black'
@@ -25,6 +26,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 })
 export class BoardRowCellComponent {
   @Input() value: number | null;
+  @Input() changed: boolean;
   @Input() rowIndex: number;
   @Input() indexInLocalRow: number;
   @Input() selectedCell: number | null;

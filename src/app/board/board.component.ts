@@ -10,6 +10,7 @@ import { NumberSelectService } from '../number-select.service';
     <div class="board">
       <app-board-row
         *ngFor="let row of rows; index as index"
+        [startingBoard]="start"
         [row]="row"
         [rowIndex]="index"
         [selectedCell]="selectedCell"
@@ -20,6 +21,7 @@ import { NumberSelectService } from '../number-select.service';
   styleUrls: ['./board.component.css'],
 })
 export class BoardComponent {
+  start: (number | null)[] = [];
   board: (number | null)[] = [];
   solution: number[] = [];
   rows: (number | null)[][] = [];
@@ -35,15 +37,16 @@ export class BoardComponent {
     this.numberSelect.selectedNumberEmitter.subscribe((num) => {
       this.checkIfCorrectNumAtCell(num);
     });
-    this.board = this.sudoku.makePuzzle();
+    this.start = this.sudoku.makePuzzle();
 
     this.solution = this.sudoku
-      .getSolution(this.board)
+      .getSolution(this.start)
       .map((num: number) => num + 1);
 
-    this.board = this.board.map((num: number | null) =>
+    this.start = this.start.map((num: number | null) =>
       num !== null ? num + 1 : null
     );
+    this.board = [...this.start];
 
     console.log(this.board);
     console.log(this.solution);

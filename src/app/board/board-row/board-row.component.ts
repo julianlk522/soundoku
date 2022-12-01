@@ -13,6 +13,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
       <app-board-row-cell
         *ngFor="let value of row; index as i"
         class="cell"
+        [changed]="value !== startingBoard[rowIndex * 9 + i]"
         [value]="value"
         [rowIndex]="rowIndex"
         [indexInLocalRow]="i"
@@ -24,6 +25,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
   styleUrls: ['./board-row.component.css'],
 })
 export class BoardRowComponent {
+  @Input() startingBoard: (number | null)[];
   @Input() row: (number | null)[];
   @Input() rowIndex: number;
   @Input() selectedCell: number | null;
