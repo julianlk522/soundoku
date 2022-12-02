@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { SelectionButtonComponent } from '../button/button.component';
 
 import { SelectionGridComponent } from './grid.component';
 
@@ -8,7 +9,7 @@ describe('GridComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [SelectionGridComponent],
+      declarations: [SelectionGridComponent, SelectionButtonComponent],
     }).compileComponents();
 
     fixture = TestBed.createComponent(SelectionGridComponent);

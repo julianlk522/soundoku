@@ -6,11 +6,11 @@ import { Subject } from 'rxjs';
 })
 export class TimerControlsService {
   private intervalId = 0;
-  private seconds = 0;
+  public seconds = 0;
   formattedTime = this.formatSeconds(this.seconds);
 
   private timerSource = new Subject<string>();
-  timerData = this.timerSource.asObservable();
+  public timerData = this.timerSource.asObservable();
 
   reset() {
     clearInterval(this.intervalId);
@@ -26,7 +26,7 @@ export class TimerControlsService {
     }, 1000);
   }
 
-  private formatSeconds(totalSeconds: number) {
+  formatSeconds(totalSeconds: number) {
     const minutes = Math.floor(totalSeconds / 60);
     const remainder = totalSeconds % 60;
     const seconds = remainder < 10 ? '0' + remainder : remainder;
