@@ -29,9 +29,9 @@ export class BoardComponent {
   @Output() emitGameOver = new EventEmitter();
 
   constructor(
-    private sudoku: GetSudokuService,
+    public sudoku: GetSudokuService,
     private numberSelect: NumberSelectService,
-    private audioContext: AudioContextService,
+    public audioContext: AudioContextService,
     private timerControls: TimerControlsService
   ) {}
 
@@ -55,9 +55,6 @@ export class BoardComponent {
 
     this.board = [...this.start];
     this.setRows();
-
-    console.log(this.board);
-    console.log(this.solution);
   }
 
   fillCellsToDecreaseDifficulty() {
@@ -69,7 +66,7 @@ export class BoardComponent {
     //  fill in random cells until filledNums = 40
     //  default difficulty makes this game really hard lol
 
-    let n = 79 - filledNums;
+    let n = 40 - filledNums;
     const checkedIndices = [];
 
     while (n > 0) {
@@ -122,7 +119,7 @@ export class BoardComponent {
     this.board.splice(this.selectedCell, 1, this.solution[this.selectedCell]);
     this.setRows();
 
-    //  if no null values left stop timer and do other game over stuff
+    //  if no null values left then stop timer and end game
     if (!this.board.filter((val: number | null) => val === null).length) {
       this.timerControls.reset();
       this.emitGameOver.emit();
