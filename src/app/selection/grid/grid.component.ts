@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { AudioContextService } from 'src/app/audio-context.service';
 import { NumberSelectService } from 'src/app/number-select.service';
 import { TimerControlsService } from 'src/app/timer-controls.service';
@@ -16,6 +16,7 @@ import { TimerControlsService } from 'src/app/timer-controls.service';
     </div>
 
     <h3 class="timer">{{ formattedTime }}</h3>
+    <h3 class="errors">Errors: {{ errors }}</h3>
   `,
   styleUrls: ['./grid.component.css'],
 })
@@ -32,6 +33,8 @@ export class SelectionGridComponent {
       (time) => (this.formattedTime = time)
     );
   }
+
+  @Input() errors: number;
 
   ngOnInit() {
     for (let i = 1; i <= 9; i++) {

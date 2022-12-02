@@ -9,17 +9,21 @@ import { TimerControlsService } from './timer-controls.service';
       *ngIf="!gameReset"
       class="mainGameFlexWrapper"
       [ngStyle]="{
-        opacity: gameWon ? '0.2' : '1',
-        filter: gameWon ? 'blur(4px)' : ''
+        opacity: gameWon ? '0.1' : '1',
+        filter: gameWon ? 'blur(8px)' : ''
       }"
     >
-      <app-board (emitGameOver)="onGameWin()"></app-board>
-      <app-selection-grid></app-selection-grid>
+      <app-board
+        (emitGameOver)="onGameWin()"
+        (emitIncorrectGuess)="incrementErrors()"
+      ></app-board>
+      <app-selection-grid [errors]="errors"></app-selection-grid>
     </div>
     <app-game-over-message
       *ngIf="gameWon"
       class="gameOverMessage"
       [victoryTime]="victoryTime"
+      [errors]="errors"
       (emitNewGameRequest)="newGame()"
     ></app-game-over-message>
   `,
@@ -27,6 +31,7 @@ import { TimerControlsService } from './timer-controls.service';
 })
 export class AppComponent {
   title = 'Soundoku';
+  errors = 0;
   gameWon = false;
   gameReset = false;
   victoryTime = '';
@@ -41,6 +46,11 @@ export class AppComponent {
   newGame() {
     this.gameWon = false;
     this.gameReset = true;
+    this.errors = 0;
     setTimeout(() => (this.gameReset = false), 0);
+  }
+
+  incrementErrors() {
+    this.errors++;
   }
 }

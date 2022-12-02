@@ -27,6 +27,7 @@ export class BoardComponent {
   selectedCell: number | null = null;
 
   @Output() emitGameOver = new EventEmitter();
+  @Output() emitIncorrectGuess = new EventEmitter();
 
   constructor(
     public sudoku: GetSudokuService,
@@ -63,10 +64,10 @@ export class BoardComponent {
       (val: number | null) => val !== null
     ).length;
 
-    //  fill in random cells until filledNums = 40
+    //  fill in random cells until filledNums = 50
     //  default difficulty makes this game really hard lol
 
-    let n = 40 - filledNums;
+    let n = 50 - filledNums;
     const checkedIndices = [];
 
     while (n > 0) {
@@ -107,10 +108,9 @@ export class BoardComponent {
   checkIfCorrectNumAtCell(num: number) {
     if (this.selectedCell !== null && this.board[this.selectedCell] === null) {
       if (this.solution[this.selectedCell] === num) {
-        console.log('correct!');
         return this.handleCorrectGuess();
       }
-      return console.log('false...');
+      this.emitIncorrectGuess.emit();
     }
   }
 

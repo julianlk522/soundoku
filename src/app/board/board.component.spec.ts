@@ -42,19 +42,19 @@ describe('BoardComponent', () => {
     ).toBe(0);
   });
 
-  it('fillCellsToDecreaseDifficulty method should result in a board with 40 filled cells', () => {
+  it('fillCellsToDecreaseDifficulty method should result in a board with 50 filled cells', () => {
     const startingFilledCells = component.sudoku
       .makePuzzle()
       .map((cell: number | null) => (cell === null ? -1 : cell))
       .filter((cell: number) => cell > 0).length;
-    expect(startingFilledCells).toBeLessThan(40);
+    expect(startingFilledCells).toBeLessThan(50);
 
     component.fillCellsToDecreaseDifficulty();
     const filledCellsAfterFuncCall = component.start
       .map((cell: number | null) => (cell === null ? -1 : cell))
       .filter((cell: number) => cell > 0).length;
 
-    expect(filledCellsAfterFuncCall).toBe(40);
+    expect(filledCellsAfterFuncCall).toBe(50);
   });
 
   xit('handleCellSelected method should invoke the audioContext service play() method only if the cell has a number value', () => {
