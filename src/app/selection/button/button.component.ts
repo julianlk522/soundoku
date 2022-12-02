@@ -3,7 +3,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 @Component({
   selector: 'app-selection-button',
   // templateUrl: './button.component.html',
-  template: `<div class="selectionButton" (click)="onClick()">
+  template: `<div class="selectionButton button" (click)="onClick()">
     <p>
       {{ num }}
     </p>
