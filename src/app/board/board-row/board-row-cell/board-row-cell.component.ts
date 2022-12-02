@@ -7,12 +7,12 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
     <div
       class="cell"
       [ngStyle]="{
-        background: changed
-          ? 'rgba(0, 255, 0, 0.5)'
+        backgroundColor: changed
+          ? 'var(--color-secondary-muted)'
           : selectedCell === rowIndex * 9 + indexInLocalRow
-          ? 'rgba(0, 0, 255, 0.75)'
+          ? 'var(--color-primary)'
           : value !== null
-          ? 'rgba(0, 0, 255, 0.5)'
+          ? 'var(--color-primary-soft)'
           : '',
         borderRight:
           indexInLocalRow === 2 || indexInLocalRow === 5

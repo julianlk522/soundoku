@@ -4,5 +4,5 @@
 
 .victoryTime {
   font-weight: 700;
-  color: red;
+  color: var(--color-accent);
 }

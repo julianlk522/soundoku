@@ -41,3 +41,16 @@ h5,
 h6 {
   overflow-wrap: break-word;
 }
+
+html {
+  font-family: "Kameron", serif;
+  --color-primary: hsl(240deg, 100%, 35%);
+  --color-primary-soft: hsl(240deg, 100%, 35%, 50%);
+  --color-primary-muted: hsl(225deg, 100%, 25%);
+
+  --color-secondary: hsl(164deg, 100%, 36%);
+  --color-secondary-soft: hsl(164deg, 100%, 36%, 50%);
+  --color-secondary-muted: hsl(164deg, 100%, 25%);
+
+  --color-accent: hsl(330deg, 100%, 50%);
+}
