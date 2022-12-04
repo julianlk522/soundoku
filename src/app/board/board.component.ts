@@ -1,8 +1,8 @@
 import { Component, Output, EventEmitter } from '@angular/core';
-import { AudioContextService } from '../audio-context.service';
-import { GetSudokuService } from '../get-sudoku.service';
-import { NumberSelectService } from '../number-select.service';
-import { TimerControlsService } from '../timer-controls.service';
+import { AudioContextService } from '../services/audio-context.service';
+import { GetSudokuService } from '../services/get-sudoku.service';
+import { NumberSelectService } from '../services/number-select.service';
+import { TimerControlsService } from '../services/timer-controls.service';
 
 @Component({
   selector: 'app-board',

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { TimerControlsService } from './timer-controls.service';
+import { TimerControlsService } from './services/timer-controls.service';
 
 @Component({
   selector: 'app-root',

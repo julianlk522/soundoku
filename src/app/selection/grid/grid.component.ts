@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
-import { AudioContextService } from 'src/app/audio-context.service';
-import { NumberSelectService } from 'src/app/number-select.service';
-import { TimerControlsService } from 'src/app/timer-controls.service';
+import { AudioContextService } from 'src/app/services/audio-context.service';
+import { NumberSelectService } from 'src/app/services/number-select.service';
+import { TimerControlsService } from 'src/app/services/timer-controls.service';
 
 @Component({
   selector: 'app-selection-grid',
