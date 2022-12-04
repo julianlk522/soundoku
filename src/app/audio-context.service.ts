@@ -46,7 +46,7 @@ export class AudioContextService {
 
   private attackTime = 0.25;
   private decayTime = 0.25;
-  private sustainLevel = 0.75;
+  private sustainLevel = 0.01;
   private releaseTime = 0.25;
 
   play(index: number) {
@@ -58,7 +58,7 @@ export class AudioContextService {
     const now = this.audioCtx.currentTime;
 
     gainNode.gain.setValueAtTime(0, 0);
-    gainNode.gain.linearRampToValueAtTime(1, now + this.attackTime);
+    gainNode.gain.linearRampToValueAtTime(0.25, now + this.attackTime);
     gainNode.gain.linearRampToValueAtTime(
       this.sustainLevel,
       now + this.attackTime + this.decayTime
