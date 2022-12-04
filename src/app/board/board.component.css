@@ -1,4 +1,11 @@
 :host {
   width: auto;
   border: 4px solid black;
+  margin-bottom: 2rem;
+}
+
+@media (min-width: 640px) {
+  :host {
+    margin-bottom: 4rem;
+  }
 }

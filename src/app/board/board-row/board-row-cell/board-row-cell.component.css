@@ -2,6 +2,13 @@
   border: 2px solid #bbb;
   width: 100%;
   text-align: center;
-  min-height: 4rem;
-  min-width: 4rem;
+  height: calc(45vw / 9);
+  width: calc(45vw / 9);
+}
+
+@media (max-width: 896px) {
+  .cell {
+    height: calc(70vw / 9);
+    width: calc(70vw / 9);
+  }
 }
