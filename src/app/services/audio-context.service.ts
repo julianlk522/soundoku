@@ -58,7 +58,7 @@ export class AudioContextService {
     const now = this.audioCtx.currentTime;
 
     gainNode.gain.setValueAtTime(0, 0);
-    gainNode.gain.linearRampToValueAtTime(0.25, now + this.attackTime);
+    gainNode.gain.linearRampToValueAtTime(0.5, now + this.attackTime);
     gainNode.gain.linearRampToValueAtTime(
       this.sustainLevel,
       now + this.attackTime + this.decayTime

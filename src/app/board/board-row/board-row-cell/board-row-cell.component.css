@@ -2,13 +2,14 @@
   border: 2px solid #bbb;
   width: 100%;
   text-align: center;
-  height: calc(45vw / 9);
-  width: calc(45vw / 9);
+  height: calc(70vw / 9);
+  width: calc(70vw / 9);
+  background: #eee;
 }
 
-@media (max-width: 896px) {
+@media (min-width: 896px) {
   .cell {
-    height: calc(70vw / 9);
-    width: calc(70vw / 9);
+    height: min(calc(45vw / 9), 75px);
+    width: min(calc(45vw / 9), 75px);
   }
 }

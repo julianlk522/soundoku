@@ -8,7 +8,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
       class="cell"
       [ngStyle]="{
         backgroundColor: changed
-          ? 'var(--color-secondary-muted)'
+          ? 'var(--color-secondary)'
           : selectedCell === rowIndex * 9 + indexInLocalRow
           ? 'var(--color-primary)'
           : value !== null
