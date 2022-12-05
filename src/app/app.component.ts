@@ -5,6 +5,8 @@ import { TimerControlsService } from './services/timer-controls.service';
   selector: 'app-root',
   // templateUrl: './app.component.html',
   template: `
+    <div *ngIf="!gameWon" class="svgBgWrapper"></div>
+
     <div
       *ngIf="!gameReset"
       class="mainGameFlexWrapper"
@@ -19,6 +21,7 @@ import { TimerControlsService } from './services/timer-controls.service';
       ></app-board>
       <app-selection-grid [errors]="errors"></app-selection-grid>
     </div>
+
     <app-game-over-message
       *ngIf="gameWon"
       class="gameOverMessage"

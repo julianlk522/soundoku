@@ -1,9 +1,38 @@
 .mainGameFlexWrapper {
+  position: relative;
+  z-index: 1;
   height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-image: linear-gradient(
+    200deg,
+    hsl(240deg, 100%, 35%, 95%) -5%,
+    hsl(224deg, 95%, 41%, 80%) 0%,
+    hsl(218deg, 90%, 43%, 65%) 8%,
+    hsl(213deg, 85%, 44%, 50%) 24%,
+    hsl(207deg, 80%, 43%, 35%) 45%,
+    hsl(200deg, 75%, 40%, 20%) 62%,
+    hsl(192deg, 70%, 36%, 15%) 75%,
+    hsl(181deg, 65%, 32%, 10%) 85%,
+    hsl(171deg, 60%, 34%, 5%) 93%,
+    hsl(164deg, 55%, 36%, 0%) 100%
+  );
+}
+
+.svgBgWrapper {
+  height: 35%;
+  width: 100%;
+  background-image: url("src/assets/svgBg.svg");
+  position: absolute;
+  opacity: 50%;
+}
+
+@media (min-width: 640px) {
+  .svgBgWrapper {
+    top: 0;
+  }
 }
 
 @media (min-width: 896px) {
@@ -11,9 +40,17 @@
     flex-direction: row;
     justify-content: space-evenly;
   }
+
+  .svgBgWrapper {
+    height: 20%;
+    top: initial;
+    bottom: 0;
+    opacity: 20%;
+  }
 }
 
 .gameOverMessage {
+  z-index: 1;
   position: absolute;
   inset: 0;
   display: flex;

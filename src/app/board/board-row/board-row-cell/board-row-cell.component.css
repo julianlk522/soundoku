@@ -7,6 +7,13 @@
   background: #eee;
 }
 
+@media (min-width: 640px) {
+  .cell {
+    height: min(calc(60vw / 9), 75px);
+    width: min(calc(60vw / 9), 75px);
+  }
+}
+
 @media (min-width: 896px) {
   .cell {
     height: min(calc(45vw / 9), 75px);
