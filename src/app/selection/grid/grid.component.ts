@@ -5,7 +5,6 @@ import { TimerControlsService } from 'src/app/services/timer-controls.service';
 
 @Component({
   selector: 'app-selection-grid',
-  // templateUrl: './grid.component.html',
   template: `
     <div class="grid">
       <app-selection-button

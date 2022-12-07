@@ -2,7 +2,6 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-game-over-message',
-  // templateUrl: './game-over-message.component.html',
   template: `
     <div>
       <h2 class="congratulationsText">Congratulations, you won!</h2>

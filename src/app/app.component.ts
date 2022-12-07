@@ -3,7 +3,6 @@ import { TimerControlsService } from './services/timer-controls.service';
 
 @Component({
   selector: 'app-root',
-  // templateUrl: './app.component.html',
   template: `
     <div *ngIf="!gameWon" class="svgBgWrapper"></div>
 

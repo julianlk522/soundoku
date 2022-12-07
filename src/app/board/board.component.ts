@@ -6,7 +6,6 @@ import { TimerControlsService } from '../services/timer-controls.service';
 
 @Component({
   selector: 'app-board',
-  // templateUrl: './board.component.html',
   template: `
     <app-board-row
       *ngFor="let row of rows; index as index"

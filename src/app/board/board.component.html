@@ -1,9 +1,0 @@
-<div class="board">
-  <app-board-row
-    *ngFor="let row of rows; index as index"
-    [row]="row"
-    [rowIndex]="index"
-    [selectedCell]="selectedCell"
-    (newCellSelected)="handleCellSelected($event)"
-  ></app-board-row>
-</div>

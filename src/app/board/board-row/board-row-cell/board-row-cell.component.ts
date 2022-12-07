@@ -2,7 +2,6 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-board-row-cell',
-  // templateUrl: './board-row-cell.component.html',
   template: `
     <div
       class="cell"
