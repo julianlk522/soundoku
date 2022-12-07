@@ -18,9 +18,9 @@ _So... how are you supposed to figure out what a cell's value is?_
 
 🖱️ Clicking on a _filled cell_ will trigger one of 9 unique tones that each correspond to a number from 1-9. You can tell that a cell has been selected when its background shift to a dark blue shade.
 
-🤓 Logically the challenge is the same: knowing that a row, column, and local box may only contain one of each value (or tone), you can assess which ones are known to be contained in order to determine which ones are not. (and then fill them in to win!)
-
 <div align='center' style="margin: 1rem 0"><img src='src/assets/readme/selectedCell.webp' alt='Selected Cell' width='300' /></div>
+
+🤓 Logically the challenge is the same: knowing that a row, column, and local box may only contain one of each value (or tone), you can assess which ones are known to be contained in order to determine which ones are not. (and then fill them in to win!)
 
 🔊 You can also listen to any of the 9 tones by clicking the _selection buttons_ that can be found next to your current elapsed time and error count.
 
