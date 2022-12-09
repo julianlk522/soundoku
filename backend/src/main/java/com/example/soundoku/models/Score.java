@@ -1,5 +1,6 @@
 package com.example.soundoku.models;
 
+import jakarta.validation.constraints.NotEmpty;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Table;
 
@@ -7,6 +8,7 @@ import org.springframework.data.relational.core.mapping.Table;
 public class Score {
     @Id
     private Integer id;
+    @NotEmpty
     private String username;
     private Integer duration;
     private byte errors;

@@ -45,7 +45,6 @@ frontend/Thumbs.db
 !**/src/main/**/target/
 !**/src/test/**/target/
 backend/HELP.md
-backend/target/
 
 ### STS ###
 backend/.apt_generated
@@ -74,6 +73,6 @@ backend/build/
 
 ### VS Code ###
 backend/.vscode/
-
+/.angular/**
 
 *.txt

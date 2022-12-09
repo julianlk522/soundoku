@@ -2,11 +2,13 @@ package com.example.soundoku.services;
 
 import com.example.soundoku.data.ScoresData;
 import com.example.soundoku.models.Score;
+import org.springframework.stereotype.Service;
 
-public class ScoresServices {
+@Service
+public class ScoresService {
     private final ScoresData scoresData;
 
-    public ScoresServices(ScoresData scoresData) {
+    public ScoresService(ScoresData scoresData) {
         this.scoresData = scoresData;
     }
 
@@ -22,7 +24,7 @@ public class ScoresServices {
         return submission;
     }
 
-    public void deleteScore(String id) {
+    public void deleteScore(Integer id) {
         scoresData.deleteById(id);
     }
 }
