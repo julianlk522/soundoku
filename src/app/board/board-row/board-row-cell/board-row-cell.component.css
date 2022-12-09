@@ -1,16 +1,19 @@
 .cell {
-  border: 2px solid #bbb;
-  width: 100%;
-  text-align: center;
   height: calc(70vw / 9);
   width: calc(70vw / 9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background: #eee;
+  font-weight: 700;
+  border: 2px solid #bbb;
 }
 
 @media (min-width: 640px) {
   .cell {
     height: min(calc(60vw / 9), 75px);
     width: min(calc(60vw / 9), 75px);
+    font-size: 1.5rem;
   }
 }
 

@@ -19,7 +19,9 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
             : ''
       }"
       (click)="toggleCellSelected()"
-    ></div>
+    >
+      {{ changed ? value : '' }}
+    </div>
   `,
   styleUrls: ['./board-row-cell.component.css'],
 })
