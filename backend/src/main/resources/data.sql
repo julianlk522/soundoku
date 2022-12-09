@@ -1,6 +1,6 @@
 CREATE TABLE IF NOT EXISTS Scores (
     score_id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
-    username INT NOT NULL,
+    username VARCHAR(255) NOT NULL,
     duration INT NOT NULL,
     errors INT NOT NULL
 )
