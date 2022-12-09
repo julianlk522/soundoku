@@ -1,5 +1,6 @@
 import { Component, Output, EventEmitter } from '@angular/core';
 import { AudioContextService } from '../services/audio-context.service';
+import { RemoveSelectionButtonService } from '../services/remove-selection-button.service';
 import { GetSudokuService } from '../services/get-sudoku.service';
 import { NumberSelectService } from '../services/number-select.service';
 import { TimerControlsService } from '../services/timer-controls.service';
@@ -32,7 +33,8 @@ export class BoardComponent {
     public sudoku: GetSudokuService,
     private numberSelect: NumberSelectService,
     public audioContext: AudioContextService,
-    private timerControls: TimerControlsService
+    private timerControls: TimerControlsService,
+    private removeSelectionButton: RemoveSelectionButtonService
   ) {}
 
   ngOnInit(): void {
@@ -117,6 +119,17 @@ export class BoardComponent {
     if (this.selectedCell === null) return;
     this.board.splice(this.selectedCell, 1, this.solution[this.selectedCell]);
     this.setRows();
+
+    //  possibly remove selection button if there are no remaining cells of a certain number
+    const selectionNumber = this.board[this.selectedCell];
+    if (selectionNumber === null) return;
+
+    let count: number = 0;
+    this.board.forEach((cell, i) => {
+      if (cell === selectionNumber) count++;
+    });
+
+    if (count === 9) this.removeSelectionButton.remove(selectionNumber);
 
     //  if no null values left then stop timer and end game
     if (!this.board.filter((val: number | null) => val === null).length) {
