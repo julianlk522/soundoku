@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { AudioContextService } from '../audio-context.service';
+import { AudioContextService } from '../services/audio-context.service';
 import { BoardRowCellComponent } from './board-row/board-row-cell/board-row-cell.component';
 import { BoardRowComponent } from './board-row/board-row.component';
 

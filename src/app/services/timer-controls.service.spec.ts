@@ -29,6 +29,6 @@ describe('TimerControlsService', () => {
 
     //  not sure yet why this doesnt work
     // spyOn(service, 'formatSeconds');
-    // expect(service.formatSeconds(20)).toBe('0: 20');
+    // expect(service.formatSeconds(10)).toBe('0: 10');
   });
 });
