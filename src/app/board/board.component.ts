@@ -102,7 +102,7 @@ export class BoardComponent {
     this.selectedCell = overallIndex;
     if (typeof value === 'number') {
       this.audioContext.stop();
-      this.audioContext.play(value - 1);
+      this.audioContext.play(value - 1, overallIndex);
     }
   }
 

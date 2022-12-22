@@ -49,9 +49,17 @@ export class AudioContextService {
   private sustainLevel = 0.01;
   private releaseTime = 0.25;
 
-  play(index: number) {
+  play(index: number, overallIndex?: number) {
     this.audioCtx = new AudioContext();
     const gainNode = this.audioCtx.createGain();
+
+    const panning =
+      typeof overallIndex !== 'undefined' ? (overallIndex % 9) / 4 - 1 : null;
+
+    const panner = new StereoPannerNode(this.audioCtx, {
+      pan: panning ? panning : undefined,
+    });
+
     const oscillator = this.audioCtx.createOscillator();
     oscillator.type = 'sine';
 
@@ -66,8 +74,10 @@ export class AudioContextService {
     gainNode.gain.setValueAtTime(this.sustainLevel, now + 1 - this.releaseTime);
     gainNode.gain.linearRampToValueAtTime(0, now + 1);
 
-    oscillator.connect(gainNode);
-    gainNode.connect(this.audioCtx.destination);
+    oscillator
+      .connect(gainNode)
+      .connect(panner)
+      .connect(this.audioCtx.destination);
 
     oscillator.frequency.value = this.notes[index].frequency;
     oscillator.start(now);
