@@ -4,6 +4,7 @@ import { RemoveSelectionButtonService } from '../services/remove-selection-butto
 import { GetSudokuService } from '../services/get-sudoku.service';
 import { NumberSelectService } from '../services/number-select.service';
 import { TimerControlsService } from '../services/timer-controls.service';
+import { RemainingCellsService } from '../services/remaining-cells.service';
 
 @Component({
   selector: 'app-board',
@@ -31,6 +32,7 @@ export class BoardComponent {
 
   constructor(
     public sudoku: GetSudokuService,
+    private remaining: RemainingCellsService,
     private numberSelect: NumberSelectService,
     public audioContext: AudioContextService,
     private timerControls: TimerControlsService,
@@ -102,7 +104,9 @@ export class BoardComponent {
     this.selectedCell = overallIndex;
     if (typeof value === 'number') {
       this.audioContext.stop();
-      this.audioContext.play(value - 1, overallIndex);
+
+      const panning = (overallIndex % 9) / 4 - 1;
+      this.audioContext.play(value - 1, panning);
     }
   }
 
@@ -131,8 +135,13 @@ export class BoardComponent {
 
     if (count === 9) this.removeSelectionButton.remove(selectionNumber);
 
+    this.remaining.emitRemainingCells(
+      this.board.filter((cell) => cell === null).length
+    );
+
     //  if no null values left then stop timer and end game
     if (!this.board.filter((val: number | null) => val === null).length) {
+      this.audioContext.playArpeggio();
       this.timerControls.reset();
       this.emitGameOver.emit();
     }
