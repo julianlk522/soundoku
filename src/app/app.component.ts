@@ -18,6 +18,7 @@ import { TimerControlsService } from './services/timer-controls.service';
         (emitGameOver)="onGameWin()"
         (emitIncorrectGuess)="incrementErrors()"
       ></app-board>
+
       <app-selection-grid [errors]="errors"></app-selection-grid>
     </div>
 

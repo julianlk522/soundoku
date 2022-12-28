@@ -67,6 +67,9 @@ describe('BoardComponent', () => {
 
     component.handleCellSelected({ overallIndex: 10, value: 7 });
     expect(component.audioContext.play).toHaveBeenCalled();
-    expect(component.audioContext.play).toHaveBeenCalledWith(7 - 1, 10);
+
+    // from board.component.ts: const panning = (overallIndex % 9) / 4 - 1;
+    const panning = (10 % 9) / 4 - 1;
+    expect(component.audioContext.play).toHaveBeenCalledWith(7 - 1, panning);
   });
 });
